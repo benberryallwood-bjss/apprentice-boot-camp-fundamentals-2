@@ -29,8 +29,17 @@ public class BowlingTest {
     public void scoreGameWithOneSpare() {
         Game game = new Game();
         int[] rolls = new int[]{5,5, 1,0, 0,0, 0,0, 0,0,
-                0,0, 0,0, 0,0, 0,0, 0,0};
+                                0,0, 0,0, 0,0, 0,0, 0,0};
         int actual = game.bowl(rolls);
         assertThat(actual).isEqualTo(12);
+    }
+
+    @Test
+    public void scoreGameWithOneStrike() {
+        Game game = new Game();
+        int[] rolls = new int[]{10, 1,1, 0,0, 0,0, 0,0,
+                0,0, 0,0, 0,0, 0,0, 0,0};
+        int actual = game.bowl(rolls);
+        assertThat(actual).isEqualTo(14);
     }
 }

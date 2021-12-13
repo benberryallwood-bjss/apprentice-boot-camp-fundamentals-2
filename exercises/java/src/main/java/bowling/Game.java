@@ -1,20 +1,35 @@
 package bowling;
 
 public class Game {
+
     public int bowl(int[] rolls) {
         int score = 0;
-        boolean isSpare = false;
-        for (int i = 0; i < rolls.length / 2; i++) {
-            int frameScore = rolls[2 * i] + rolls[2 * i + 1];
-            if (isSpare) {
-                score += rolls[2 * i];
-                isSpare = false;
+        boolean wasSpare = false;
+        boolean wasStrike = false;
+        for (int i = 0; i < rolls.length; i += 2) {
+            if (wasSpare) {
+                score += rolls[i];
+                wasSpare = false;
             }
-            if (frameScore == 10) {
-                isSpare = true;
+            if (wasStrike) {
+                score += rolls[i] + rolls[i + 1];
+                wasStrike = false;
+            }
+
+            int frameScore;
+            if (rolls[i] == 10) {
+                frameScore = 10;
+                wasStrike = true;
+                i--;
+            } else {
+                frameScore = rolls[i] + rolls[i + 1];
+                if (frameScore == 10) {
+                    wasSpare = true;
+                }
             }
             score += frameScore;
         }
         return score;
     }
+
 }
