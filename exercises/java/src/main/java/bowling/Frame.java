@@ -7,32 +7,36 @@ public class Frame {
     private List<Integer> scores;
     private int totalScore;
 
-    public Frame(int score) {
+    public Frame() {
         scores = new ArrayList<>();
-        scores.add(score);
-        totalScore = score;
     }
 
-    public Frame(int firstScore, int secondScore) {
-        scores = new ArrayList<>();
-        scores.add(firstScore);
-        scores.add(secondScore);
-        totalScore = firstScore + secondScore;
+    public void bowl(int score) {
+        scores.add(score);
+        totalScore += score;
     }
 
-    public void roll(int score) {
-        scores.add(score);
+    public void addBonus(int score) {
+        totalScore += score;
     }
 
     public int getScore() {
         return totalScore;
     }
 
+    public boolean isOver() {
+        return scores.size() == 2 || getScore() >= 10;
+    }
+
     public boolean isSpare() {
-        return scores.size() == 2 && getScore() == 10;
+        return scores.size() == 2 && scores.get(0) + scores.get(1) == 10;
     }
 
     public boolean isStrike() {
-        return scores.size() == 1 && getScore() == 10;
+        return scores.size() == 1 && scores.get(0) == 10;
+    }
+
+    public int getLength() {
+        return scores.size();
     }
 }
