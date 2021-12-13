@@ -14,4 +14,13 @@ public class BowlingTest {
         int actual = game.bowl(rolls);
         assertThat(actual).isEqualTo(0);
     }
+
+    @Test
+    public void scoreGameWithoutSparesOrStrikes() {
+        Game game = new Game();
+        int[] rolls = new int[]{1,1, 1,1, 1,1, 1,1, 1,1,
+                                1,1, 1,1, 1,1, 1,1, 1,1};
+        int actual = game.bowl(rolls);
+        assertThat(actual).isEqualTo(20);
+    }
 }
