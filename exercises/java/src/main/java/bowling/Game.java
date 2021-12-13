@@ -1,6 +1,15 @@
 package bowling;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
+
+    private List<Frame> frames;
+
+    public Game() {
+        frames = new ArrayList<>();
+    }
 
     public int bowl(int[] rolls) {
         int score = 0;
