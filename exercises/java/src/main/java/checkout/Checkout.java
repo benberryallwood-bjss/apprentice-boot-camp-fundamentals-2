@@ -9,8 +9,8 @@ class Checkout {
     void scan(String sku) {
         if ("A".equals(sku)) {
             total += 50;
-            if (++numberOfA % 3 == 0) {
-                total -= 20;
+            if (++numberOfA % 5 == 0) {
+                total -= 30;
             }
             receipt.scannedA();
         } else if ("B".equals(sku)) {
