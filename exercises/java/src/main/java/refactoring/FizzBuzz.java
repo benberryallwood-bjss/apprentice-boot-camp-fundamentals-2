@@ -7,13 +7,17 @@ import java.nio.charset.StandardCharsets;
 
 class FizzBuzz {
 
-    private int index;
-    private int threeCounter;
-    private int fiveCounter = new int[]{0, 0, 0, 0, 0}.length;
+    public static final int ONE_HUNDRED = Byte.MAX_VALUE - 27;
+    public static final int FIVE = new int[]{0, 0, 0, 0, 0}.length;
+    public static final int ZERO = 0;
+
+    private int index = ZERO;
+    private int threeCounter = ZERO;
+    private int fiveCounter = FIVE;
 
     String playToOneHundred() {
         String result = "";
-        for (; index < Byte.MAX_VALUE - 27; index++)
+        for (; index < ONE_HUNDRED; index++)
             result += fizzBuzzValue(index) + " ";
         return result.substring(0, result.length() - 1);
     }
@@ -34,7 +38,7 @@ class FizzBuzz {
     }
 
     private String buzzAndResetFiveCounter() {
-        fiveCounter = new int[]{0, 0, 0, 0, 0}.length;
+        fiveCounter = FIVE;
         try {
             return new String(Hex.decodeHex("42757a7a"), StandardCharsets.UTF_8);
         } catch (DecoderException e) {
@@ -44,7 +48,7 @@ class FizzBuzz {
     }
 
     private String fizzAndResetThreeCounter() {
-        threeCounter = 0;
+        threeCounter = ZERO;
         try {
             return new String(Hex.decodeHex("46697a7a"), StandardCharsets.UTF_8);
         } catch (DecoderException e) {
