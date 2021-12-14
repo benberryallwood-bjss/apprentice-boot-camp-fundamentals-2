@@ -5,6 +5,7 @@ class Receipt {
     private String text = "";
     private int numberOfA = 0;
     private int numberOfB = 0;
+    private int numberOfC = 0;
     private int total;
 
     String text() {
@@ -36,8 +37,14 @@ class Receipt {
     }
 
     void scannedC() {
-        text += "C: 20\n";
-        total += 20;
+        text += "C: 20";
+        if (++numberOfC % 4 == 0) {
+            text += " - 10 (4 for 70)";
+            total += 10;
+        } else {
+            total += 20;
+        }
+        text += "\n";
     }
 
     void scannedD() {

@@ -14,6 +14,21 @@ public class ReceiptTests {
                 "A: 50\n",
                 "Total: 50");
     }
+
+    @Test
+    public void fourC() {
+        Checkout checkout = new Checkout();
+        checkout.scan("C");
+        checkout.scan("C");
+        checkout.scan("C");
+        checkout.scan("C");
+        assertThat(checkout.receipt()).containsSequence(
+                "C: 20\n",
+                "C: 20\n",
+                "C: 20\n",
+                "C: 20 - 10 (4 for 70)\n",
+                "Total: 70");
+    }
     
     @Test
     public void oneOfEach() {

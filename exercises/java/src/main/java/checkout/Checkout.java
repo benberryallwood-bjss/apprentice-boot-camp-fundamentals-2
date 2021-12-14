@@ -4,6 +4,7 @@ class Checkout {
     private int total;
     private int numberOfA = 0;
     private int numberOfB = 0;
+    private int numberOfC = 0;
     private Receipt receipt = new Receipt();
 
     void scan(String sku) {
@@ -21,6 +22,9 @@ class Checkout {
             receipt.scannedB();
         } else if ("C".equals(sku)) {
             total += 20;
+            if (++numberOfC % 4 == 0) {
+                total -= 10;
+            }
             receipt.scannedC();
         } else if ("D".equals(sku)) {
             total += 15;
