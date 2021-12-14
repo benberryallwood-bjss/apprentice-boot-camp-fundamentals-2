@@ -26,6 +26,6 @@ public class FizzBuzzTest {
                                 "39312039322046697a7a2039342042757a7a2046697a7a2039372039382046697a7a2042757a7a"
                 ), StandardCharsets.UTF_8);
         String actual = new FizzBuzz().playToOneHundred();
-        assertThat(actual.equals(expected)).isTrue();
+        assertThat(actual).isEqualTo(expected);
     }
 }
